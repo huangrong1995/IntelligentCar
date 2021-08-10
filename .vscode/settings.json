@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "key.h": "c",
-        "systick.h": "c"
+        "systick.h": "c",
+        "exti.h": "c",
+        "stm32f10x.h": "c"
     }
 }

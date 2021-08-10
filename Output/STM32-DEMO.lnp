@@ -3,6 +3,7 @@
 "..\output\led_1.o"
 "..\output\systick.o"
 "..\output\key.o"
+"..\output\exti.o"
 "..\output\main.o"
 "..\output\stm32f10x_it.o"
 "..\output\led_1.o"

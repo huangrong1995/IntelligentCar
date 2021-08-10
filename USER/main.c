@@ -23,8 +23,9 @@ int main(void)
     int keyStatus;
 
     LED_Init();
-    SysTick_Init();
-    Key_GPIO_Init();
+    // SysTick_Init();
+    // Key_GPIO_Init();
+    EXTI_PE5_Init();
 
     while(1) {
         if (Key_Scan(GPIOE, GPIO_Pin_5) == KEY_ON) {

@@ -154,9 +154,21 @@ void SysTick_Handler(void)
 {
 }*/
 
+void EXTI9_5_IRQHandler(void)
+{
+    int keyStatus;
+    if(EXTI_GetITStatus(EXTI_Line5) != RESET) //确保是否产生了EXTI Line中断
+    {
+      // LED1 取反
+      keyStatus = GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_3);
+      GPIO_WriteBit(GPIOC, GPIO_Pin_3, (BitAction)(1 - keyStatus));
+      EXTI_ClearITPendingBit(EXTI_Line5);     //清除中断标志位
+    }
+}
+
 /**
   * @}
-  */ 
+  */
 
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
