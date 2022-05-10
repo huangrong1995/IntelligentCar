@@ -9,4 +9,5 @@
 ..\output\systick.o: ..\CMSIS\stm32f10x.h
 ..\output\systick.o: ..\FWlib\inc\stm32f10x_gpio.h
 ..\output\systick.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\systick.o: ..\FWlib\inc\stm32f10x_tim.h
 ..\output\systick.o: ..\FWlib\inc\misc.h

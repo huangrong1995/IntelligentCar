@@ -9,4 +9,5 @@
 ..\output\misc.o: ..\CMSIS\stm32f10x.h
 ..\output\misc.o: ..\FWlib\inc\stm32f10x_gpio.h
 ..\output\misc.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\misc.o: ..\FWlib\inc\stm32f10x_tim.h
 ..\output\misc.o: ..\FWlib\inc\misc.h

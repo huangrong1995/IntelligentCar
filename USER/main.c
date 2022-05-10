@@ -12,6 +12,9 @@
 #include "led.h"
 #include "SysTick.h"
 #include "key.h"
+#include "exti.h"
+#include "pwm_output.h"
+
 /*
  * 函数名：main
  * 描述  : 主函数
@@ -26,6 +29,7 @@ int main(void)
     // SysTick_Init();
     // Key_GPIO_Init();
     EXTI_PE5_Init();
+    TIM3_PWM_Init();
 
     while(1) {
         if (Key_Scan(GPIOE, GPIO_Pin_5) == KEY_ON) {

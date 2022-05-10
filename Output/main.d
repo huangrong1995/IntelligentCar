@@ -8,7 +8,10 @@
 ..\output\main.o: ..\CMSIS\stm32f10x.h
 ..\output\main.o: ..\FWlib\inc\stm32f10x_gpio.h
 ..\output\main.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\main.o: ..\FWlib\inc\stm32f10x_tim.h
 ..\output\main.o: ..\FWlib\inc\misc.h
 ..\output\main.o: led.h
 ..\output\main.o: SysTick.h
 ..\output\main.o: key.h
+..\output\main.o: exti.h
+..\output\main.o: pwm_output.h

@@ -400,6 +400,11 @@
               <FileType>1</FileType>
               <FilePath>.\exti.c</FilePath>
             </File>
+            <File>
+              <FileName>pwm_output.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\pwm_output.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -414,11 +419,6 @@
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\led.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -9,4 +9,5 @@
 ..\output\stm32f10x_flash.o: ..\CMSIS\stm32f10x.h
 ..\output\stm32f10x_flash.o: ..\FWlib\inc\stm32f10x_gpio.h
 ..\output\stm32f10x_flash.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\stm32f10x_flash.o: ..\FWlib\inc\stm32f10x_tim.h
 ..\output\stm32f10x_flash.o: ..\FWlib\inc\misc.h

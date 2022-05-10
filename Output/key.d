@@ -9,5 +9,6 @@
 ..\output\key.o: ..\CMSIS\stm32f10x.h
 ..\output\key.o: ..\FWlib\inc\stm32f10x_gpio.h
 ..\output\key.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\key.o: ..\FWlib\inc\stm32f10x_tim.h
 ..\output\key.o: ..\FWlib\inc\misc.h
 ..\output\key.o: SysTick.h
