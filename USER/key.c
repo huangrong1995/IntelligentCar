@@ -15,6 +15,7 @@
 **********************************************************************************/
 #include "key.h"
 #include "SysTick.h"
+#include "debug.h"
  /*
  * 函数名： Delay
  * 描述  ：不精确的延时
@@ -59,9 +60,11 @@ uint8_t Key_Scan(GPIO_TypeDef* GPIOx,u16 GPIO_Pin)
 	if(GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON )
 	{
 		/*延时消抖*/
+		LOG("Key press\n");
 		Delay_Time_MS(50);
 		if(GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON )
 		{
+			LOG("Key release\n");
 			/*等待按键释放 */
 			while(GPIO_ReadInputDataBit(GPIOx,GPIO_Pin) == KEY_ON);
 			return 	KEY_ON;

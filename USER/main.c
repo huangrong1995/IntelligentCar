@@ -14,6 +14,9 @@
 #include "key.h"
 #include "exti.h"
 #include "pwm_output.h"
+#include "usart.h"
+#include "stdio.h"
+#include "debug.h"
 
 /*
  * 函数名：main
@@ -24,18 +27,26 @@
 int main(void)
 {
     int keyStatus;
+    int ledStatus = 0;
 
+	USART_Config();
+    LOG("Start init intelligent car system...\n");
     LED_Init();
-    // SysTick_Init();
-    // Key_GPIO_Init();
+    SysTick_Init();
+    Key_GPIO_Init();
     EXTI_PE5_Init();
     TIM3_PWM_Init();
-
+    
+    LOG("Start init OK...\n");
+	
     while(1) {
-        if (Key_Scan(GPIOE, GPIO_Pin_5) == KEY_ON) {
+        keyStatus = Key_Scan(GPIOE, GPIO_Pin_5);
+        if (keyStatus == KEY_ON) {
             /*LED1反转*/
-            keyStatus = GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_3);
-            GPIO_WriteBit(GPIOC, GPIO_Pin_3, (BitAction)(1 - keyStatus));
+            LOG("反转LED[%d]\n", ledStatus);
+            ledStatus = GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_3);
+            GPIO_WriteBit(GPIOC, GPIO_Pin_3, (BitAction)(1 - ledStatus));
+            LOG("反转LED[%d]\n", ledStatus);
         }
     }
     // add your code here ^_^。

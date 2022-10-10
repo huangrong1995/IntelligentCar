@@ -14,6 +14,7 @@
  * 淘宝    ：http://firestm32.taobao.com
 **********************************************************************************/
 #include "SysTick.h"
+#include "debug.h"
 
 static __IO u32 TimeDelayUS;
 static __IO u32 TimeDelayMS;
@@ -72,10 +73,8 @@ void Delay_Time_US(__IO u32 nTime)
 void Delay_Time_MS(__IO u32 nTime)
 {
 	TimeDelayUS = nTime * 100;
-
 	// 使能滴答定时器
 	SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
-
 	while(TimeDelayUS != 0);
 }
 
