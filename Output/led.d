@@ -1,13 +1,6 @@
-..\output\led.o: led.c
-..\output\led.o: led.h
-..\output\led.o: ..\CMSIS\stm32f10x.h
-..\output\led.o: ..\CMSIS\core_cm3.h
-..\output\led.o: D:\Program Files\Keil_V518\ARM\ARMCC\Bin\..\include\stdint.h
-..\output\led.o: ..\CMSIS\system_stm32f10x.h
-..\output\led.o: ..\USER\stm32f10x_conf.h
-..\output\led.o: ..\FWlib\inc\stm32f10x_exti.h
-..\output\led.o: ..\CMSIS\stm32f10x.h
-..\output\led.o: ..\FWlib\inc\stm32f10x_gpio.h
-..\output\led.o: ..\FWlib\inc\stm32f10x_rcc.h
-..\output\led.o: ..\FWlib\inc\stm32f10x_tim.h
-..\output\led.o: ..\FWlib\inc\misc.h
+../output/led.o: led.c ..\USER\led.h ..\CMSIS\stm32f10x.h \
+  ..\CMSIS\core_cm3.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  ..\CMSIS\system_stm32f10x.h ..\USER\stm32f10x_conf.h \
+  ..\FWlib\inc\stm32f10x_exti.h ..\FWlib\inc\stm32f10x_gpio.h \
+  ..\FWlib\inc\stm32f10x_rcc.h ..\FWlib\inc\stm32f10x_tim.h \
+  ..\FWlib\inc\stm32f10x_usart.h ..\FWlib\inc\misc.h

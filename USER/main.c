@@ -1,12 +1,12 @@
 /******************** (C) COPYRIGHT 2012 WildFire Team **************************
- * ÎÄ¼şÃû  £ºmain.c
- * ÃèÊö    £ºÓÃ3.5.0°æ±¾½¨µÄ¹¤³ÌÄ£°å¡£
- * ÊµÑéÆ½Ì¨£ºÒ°»ğSTM32¿ª·¢°å
- * ¿â°æ±¾  £ºST3.5.0
+ * æ–‡ä»¶å  ï¼šmain.c
+ * æè¿°    ï¼šç”¨3.5.0ç‰ˆæœ¬å»ºçš„å·¥ç¨‹æ¨¡æ¿ã€‚
+ * å®éªŒå¹³å°ï¼šé‡ç«STM32å¼€å‘æ¿
+ * åº“ç‰ˆæœ¬  ï¼šST3.5.0
  *
- * ×÷Õß    £ºwildfire team
- * ÂÛÌ³    £ºhttp://www.amobbs.com/forum-1008-1.html
- * ÌÔ±¦    £ºhttp://firestm32.taobao.com
+ * ä½œè€…    ï¼šwildfire team
+ * è®ºå›    ï¼šhttp://www.amobbs.com/forum-1008-1.html
+ * æ·˜å®    ï¼šhttp://firestm32.taobao.com
 **********************************************************************************/
 #include "stm32f10x.h"
 #include "led.h"
@@ -15,41 +15,45 @@
 #include "exti.h"
 #include "pwm_output.h"
 #include "usart.h"
+#include "pwm_input.h"
+
 #include "stdio.h"
 #include "debug.h"
 
 /*
- * º¯ÊıÃû£ºmain
- * ÃèÊö  : Ö÷º¯Êı
- * ÊäÈë  £ºÎŞ
- * Êä³ö  : ÎŞ
+ * å‡½æ•°åï¼šmain
+ * æè¿°  : ä¸»å‡½æ•°
+ * è¾“å…¥  ï¼šæ— 
+ * è¾“å‡º  : æ— 
  */
 int main(void)
 {
     int keyStatus;
     int ledStatus = 0;
 
-	USART_Config();
+    USART_Config();
+    LOG("\r\n");
     LOG("Start init intelligent car system...\n");
     LED_Init();
     SysTick_Init();
     Key_GPIO_Init();
     EXTI_PE5_Init();
     TIM3_PWM_Init();
+    PWM_InputInit();
     
     LOG("Start init OK...\n");
-	
+
     while(1) {
         keyStatus = Key_Scan(GPIOE, GPIO_Pin_5);
         if (keyStatus == KEY_ON) {
-            /*LED1·´×ª*/
-            LOG("·´×ªLED[%d]\n", ledStatus);
+            /*LED1åè½¬*/
+            LOG("Revert LED[%d]\n", ledStatus);
             ledStatus = GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_3);
             GPIO_WriteBit(GPIOC, GPIO_Pin_3, (BitAction)(1 - ledStatus));
-            LOG("·´×ªLED[%d]\n", ledStatus);
+            LOG("Revert LED[%d]\n", ledStatus);
         }
     }
-    // add your code here ^_^¡£
+    // add your code here ^_^ã€‚
 }
 
 /******************* (C) COPYRIGHT 2012 WildFire Team *****END OF FILE************/

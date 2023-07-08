@@ -3,6 +3,9 @@
         "key.h": "c",
         "systick.h": "c",
         "exti.h": "c",
-        "stm32f10x.h": "c"
+        "stm32f10x.h": "c",
+        "debug.h": "c",
+        "pwm_input.h": "c",
+        "stm32f10x_it.h": "c"
     }
 }

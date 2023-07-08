@@ -23,7 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-
+#include "debug.h"
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -32,6 +32,10 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+__IO uint16_t IC2Value = 0;
+__IO uint16_t IC2Value1 = 0;
+__IO uint16_t DutyCycle = 0;
+__IO uint16_t Frequency = 0;
 /* Private function prototypes -----------------------------------------------*/
 extern void TimeDelay_Decrement(void);
 /* Private functions ---------------------------------------------------------*/
@@ -165,6 +169,74 @@ void EXTI9_5_IRQHandler(void)
       EXTI_ClearITPendingBit(EXTI_Line5);     //清除中断标志位
     }
 }
+
+/**
+  * @brief  This function handles TIM2 global interrupt request.
+  * @param  None
+  * @retval : None
+  */
+ #if 1
+void TIM2_IRQHandler(void)
+{
+  /* Clear TIM2 Capture compare interrupt pending bit */
+  TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
+
+  /* Get the Input Capture value */
+  IC2Value = TIM_GetCapture2(TIM2);
+
+  if (IC2Value != 0) 
+  {
+    /* Duty cycle computation */
+    TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
+    IC2Value1 = TIM_GetCapture1(TIM2);
+    LOG("IC2Value = %d, IC2Value1 = %d\n", IC2Value, IC2Value1);
+    DutyCycle = (IC2Value1 * 100) / IC2Value;
+
+    /* Frequency computation */
+    Frequency = 1000000 / IC2Value;
+  }
+  else
+  {
+    DutyCycle = 0;
+    Frequency = 0;
+  }
+
+  LOG("DutyCycle = %d, Frequency = %d\n", DutyCycle, Frequency);
+}
+#else
+void TIM2_IRQHandler(void)
+{
+  /* Clear TIM2 Capture compare interrupt pending bit */
+  TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
+
+  /* Get the Input Capture value */
+  IC2Value = TIM_GetCapture2(TIM2) + 243540;
+
+  int count = 0;
+
+  if (IC2Value != 0)
+  {
+    /* Duty cycle computation */
+    // TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
+
+    IC2Value1 = TIM_GetCapture1(TIM2);
+    if (IC2Value1 < 1000)
+      IC2Value1 += 65535;
+    LOG("IC2Value = %d, IC2Value1 = %d\n", IC2Value, IC2Value1);
+    DutyCycle = (IC2Value1 * 100) / IC2Value;
+
+    /* Frequency computation */
+    Frequency = 1000000 / IC2Value;
+  }
+  else
+  {
+    DutyCycle = 0;
+    Frequency = 0;
+  }
+
+  LOG("DutyCycle = %d, Frequency = %d\n", DutyCycle, Frequency);
+}
+#endif
 
 /**
   * @}

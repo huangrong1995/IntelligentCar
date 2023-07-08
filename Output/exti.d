@@ -1,13 +1,6 @@
-..\output\exti.o: exti.c
-..\output\exti.o: exti.h
-..\output\exti.o: ..\CMSIS\stm32f10x.h
-..\output\exti.o: ..\CMSIS\core_cm3.h
-..\output\exti.o: D:\Program Files\Keil_V518\ARM\ARMCC\Bin\..\include\stdint.h
-..\output\exti.o: ..\CMSIS\system_stm32f10x.h
-..\output\exti.o: ..\USER\stm32f10x_conf.h
-..\output\exti.o: ..\FWlib\inc\stm32f10x_exti.h
-..\output\exti.o: ..\CMSIS\stm32f10x.h
-..\output\exti.o: ..\FWlib\inc\stm32f10x_gpio.h
-..\output\exti.o: ..\FWlib\inc\stm32f10x_rcc.h
-..\output\exti.o: ..\FWlib\inc\stm32f10x_tim.h
-..\output\exti.o: ..\FWlib\inc\misc.h
+../output/exti.o: exti.c ..\USER\exti.h ..\CMSIS\stm32f10x.h \
+  ..\CMSIS\core_cm3.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  ..\CMSIS\system_stm32f10x.h ..\USER\stm32f10x_conf.h \
+  ..\FWlib\inc\stm32f10x_exti.h ..\FWlib\inc\stm32f10x_gpio.h \
+  ..\FWlib\inc\stm32f10x_rcc.h ..\FWlib\inc\stm32f10x_tim.h \
+  ..\FWlib\inc\stm32f10x_usart.h ..\FWlib\inc\misc.h
